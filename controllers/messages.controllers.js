@@ -1,8 +1,8 @@
-const Message = require("../models/message");
+const Message = require("../models/Message");
 
 const index = async (req, res) => {
   Message.find({}, (error, messages) => {
-    if (messages?.count) {
+    if (messages) {
       res.status(200).json({
         messages,
         error: null,
