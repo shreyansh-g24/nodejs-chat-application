@@ -17,7 +17,10 @@ const index = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const message = new Message(req.body);
+  const message = new Message({
+    message: req.body.message,
+    name: req.body.name,
+  });
 
   message.save((error) => {
     if (error) {
