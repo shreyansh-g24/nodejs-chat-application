@@ -17,10 +17,16 @@ function addMessages(message) {
 
 function getMessages() {
   $.get("http://localhost:3000/messages", (data) => {
-    data.forEach(addMessages);
+    console.log("data");
+    console.log(data);
+    if (!data.error) {
+      data.messages.forEach(addMessages);
+    } else {
+      addMessages(data.error);
+    }
   });
 }
 
-function sendMessage(message) {
-  $.post("http://localhost:3000/messages", message);
+function sendMessage(messageData) {
+  $.post("http://localhost:3000/messages", messageData);
 }
