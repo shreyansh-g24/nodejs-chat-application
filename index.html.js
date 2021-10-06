@@ -10,6 +10,8 @@ $(() => {
 });
 
 function addMessages(message) {
+  console.log("message");
+  console.log(message);
   $("#messages").append(`
     <h4> ${message.name} </h4>
     <p>  ${message.message} </p>`);
@@ -17,8 +19,6 @@ function addMessages(message) {
 
 function getMessages() {
   $.get("http://localhost:3000/messages", (data) => {
-    console.log("data");
-    console.log(data);
     if (!data.error) {
       data.messages.forEach(addMessages);
     } else {
@@ -28,5 +28,7 @@ function getMessages() {
 }
 
 function sendMessage(messageData) {
-  $.post("http://localhost:3000/messages", messageData);
+  $.post("http://localhost:3000/messages", messageData).done((data) => {
+    addMessages(data.message);
+  });
 }
