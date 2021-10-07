@@ -13,8 +13,6 @@ $(() => {
 });
 
 function addMessages(message) {
-  console.log("message");
-  console.log(message);
   $("#messages").append(`
     <h4> ${message.name} </h4>
     <p>  ${message.message} </p>`);
