@@ -29,6 +29,8 @@ const create = async (req, res) => {
         error,
       });
     } else {
+      req.app.get("socketio").emit("message", message);
+
       res.status(200).json({
         message,
         error: null,
